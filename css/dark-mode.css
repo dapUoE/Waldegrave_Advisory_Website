@@ -84,12 +84,34 @@ body.dark-mode .insights-chart-container canvas {
     filter: brightness(0.9);
 }
 
+/* Disclaimer in Dark Mode */
+body.dark-mode .disclaimer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
 /* Form Focus States */
 body.dark-mode .form-group input:focus,
 body.dark-mode .form-group select:focus,
 body.dark-mode .form-group textarea:focus {
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
+}
+
+/* Form Notice in Dark Mode */
+body.dark-mode .form-notice,
+body.dark-mode .contact-note {
+    color: #adb5bd;
+    background-color: rgba(0, 194, 255, 0.05);
+    border-left-color: var(--accent-color);
+}
+
+/* Contact Logo Section in Dark Mode */
+body.dark-mode .contact-heading {
+    color: #f5f5f5;
+}
+
+body.dark-mode .contact-message {
+    color: #aaaaaa;
 }
 
 /* About Section Dark Mode */

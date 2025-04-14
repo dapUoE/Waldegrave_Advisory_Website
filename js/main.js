@@ -425,45 +425,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize contact form submission with Google Forms
-    const contactForm = document.getElementById('contactForm');
-    const hiddenIframe = document.getElementById('hidden_iframe');
-    
-    if (contactForm && hiddenIframe) {
-        // Handle form submission success
-        hiddenIframe.onload = function() {
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'form-success fade-in';
-            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! We will be in touch soon.';
-            
-            // Get the submit button and reset it
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            if (submitButton && submitButton.innerHTML.includes('fa-spinner')) {
-                contactForm.parentNode.insertBefore(successMessage, contactForm);
-                contactForm.style.display = 'none';
-                
-                // Reset the form
-                contactForm.reset();
-                
-                // Reset the form after 5 seconds
-                setTimeout(() => {
-                    contactForm.style.display = 'block';
-                    successMessage.remove();
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = 'Send Message';
-                }, 5000);
-            }
-        };
-        
-        // Submit event
-        contactForm.addEventListener('submit', function() {
-            // Update button to show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        });
-    }
+    // Contact form has been replaced with logo and direct contact buttons
+    // Form functionality will be implemented in the future
     
     // Add glowing accent elements
     addGlowingAccents();

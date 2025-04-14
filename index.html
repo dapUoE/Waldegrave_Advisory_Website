@@ -37,9 +37,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
-    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="icon" href="images/favicon/favicon.ico?v=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png?v=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png?v=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=1.0">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico?v=1.0">
+    <meta name="msapplication-TileColor" content="#0a2540">
+    <link rel="manifest" href="site.webmanifest?v=1.0">
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -130,6 +134,7 @@
             <div class="hero-visual">
                 <div class="market-data-visual">
                     <canvas id="marketChart"></canvas>
+                    <p class="disclaimer">* Chart contains simulated data for illustrative purposes only.</p>
                 </div>
             </div>
         </div>
@@ -286,6 +291,7 @@
                     <div class="insights-chart-container">
                         <canvas id="insightsChart"></canvas>
                     </div>
+                    <p class="disclaimer">* Charts are for illustrative purposes only and do not represent actual market data.</p>
                 </div>
             </div>
         </div>
@@ -313,35 +319,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <!-- Replace YOUR_FORM_ID with your actual Google Form ID -->
-                    <form id="contactForm" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="hidden_iframe">
-                        <div class="form-group">
-                            <!-- Replace entry.123456789 with your actual Google Form field IDs -->
-                            <input type="text" id="name" name="entry.123456789" placeholder="Your Name" required>
+                <div class="contact-form contact-logo-container">
+                    <div class="contact-logo-content">
+                        <div class="contact-logo">
+                            <img src="images/logo.png" alt="Waldegrave Advisory Logo" class="large-logo">
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="entry.123456790" placeholder="Your Email" required>
+                        <h3 class="contact-heading">WALDEGRAVE <span class="gold-gradient">ADVISORY</span></h3>
+                        <p class="contact-message">Please get in touch with us using the contact details provided.</p>
+                        <div class="contact-direct-buttons">
+                            <a href="tel:+44 79 5036 9733" class="btn btn-primary"><i class="fas fa-phone"></i> Call Us</a>
+                            <a href="mailto:alexpricefx@yahoo.co.uk" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Us</a>
                         </div>
-                        <div class="form-group">
-                            <input type="text" id="company" name="entry.123456791" placeholder="Company Name">
-                        </div>
-                        <div class="form-group">
-                            <select id="service" name="entry.123456792">
-                                <option value="" disabled selected>Select Service</option>
-                                <option value="fx">FX Risk Management</option>
-                                <option value="sales">Sales and Communication Strategy</option>
-                                <option value="crypto">Cryptocurrency Solutions</option>
-                                <option value="payments">FX Payments and Digitisation</option>
-                                <option value="other">Other Services</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="entry.123456793" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                        <p class="contact-note">Our contact form is currently under development. Thank you for your patience.</p>
+                    </div>
                 </div>
             </div>
         </div>

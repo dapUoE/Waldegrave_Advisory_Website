@@ -702,6 +702,76 @@ nav ul li a.active:after {
     display: block;
 }
 
+.form-notice {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(0, 194, 255, 0.05);
+}
+
+/* Contact Logo Container Styling */
+.contact-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.contact-logo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.contact-logo {
+    margin-bottom: 1.5rem;
+}
+
+.large-logo {
+    width: 120px;
+    height: auto;
+}
+
+.contact-heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.contact-message {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--grey-text);
+}
+
+.contact-direct-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-direct-buttons .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-note {
+    font-size: 0.9rem;
+    color: var(--grey-text);
+    font-style: italic;
+    padding: 0.75rem;
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(0, 194, 255, 0.05);
+    max-width: 80%;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -1181,6 +1251,15 @@ footer {
     visibility: hidden;
     opacity: 0;
     transition: all 0.2s ease;
+}
+
+/* Disclaimer Text Styling */
+.disclaimer {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
 }
 
 /* Back to Top Button */
