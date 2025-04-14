@@ -1,4 +1,21 @@
+# www.robotstxt.org/
+
+# Allow crawling of all content
 User-agent: *
 Allow: /
 
+# Tell Google where to find your sitemap
 Sitemap: https://www.waldegraveadvisory.com/sitemap.xml
+
+# Optimize crawling rate
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Discourage crawling of these directories
+User-agent: *
+Disallow: /css/
+Disallow: /js/
+Disallow: /images/

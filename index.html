@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waldegrave Advisory LTD | Financial Risk Management Experts</title>
-    <meta name="description" content="Expert financial risk management advisory services for FX, commodities, and cryptocurrency markets. Tailored strategies to protect your business from market volatility.">
-    <meta name="keywords" content="financial risk management, FX risk, commodity risk, cryptocurrency risk, hedging strategy, financial advisory">
+    <meta name="description" content="Waldegrave Advisory provides expert financial risk management services across FX, commodities, and cryptocurrency markets. UK-based specialists in tailored hedging strategies.">
+    <meta name="keywords" content="financial risk management, FX risk management, currency hedging, commodity risk advisory, cryptocurrency risk, hedging strategy, financial advisory, UK risk advisory">
     <meta name="author" content="Waldegrave Advisory LTD">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="GB">
+    <meta name="geo.placename" content="London">
+    <link rel="canonical" href="https://www.waldegraveadvisory.com/">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Waldegrave Advisory LTD | Financial Risk Management Experts">
-    <meta property="og:description" content="Expert financial risk management advisory services for FX, commodities, and cryptocurrency markets.">
+    <meta property="og:title" content="Waldegrave Advisory LTD | UK Financial Risk Management Experts">
+    <meta property="og:description" content="UK-based specialists in FX, commodity and crypto risk management. Tailored hedging strategies to protect your business from market volatility.">
     <meta property="og:url" content="https://www.waldegraveadvisory.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.waldegraveadvisory.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Waldegrave Advisory">
+    <meta property="og:locale" content="en_GB">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Waldegrave Advisory LTD | Financial Risk Management">
-    <meta name="twitter:description" content="Expert financial risk management advisory services for FX, commodities, and cryptocurrency markets.">
+    <meta name="twitter:title" content="Waldegrave Advisory | Financial Risk Management Solutions">
+    <meta name="twitter:description" content="UK specialists in currency hedging, commodity risk management and crypto risk advisory. Expert financial solutions for businesses of all sizes.">
     <meta name="twitter:image" content="https://www.waldegraveadvisory.com/images/og-image.jpg">
+    <meta name="twitter:creator" content="@WaldegraveAdv">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
@@ -30,29 +37,84 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="shortcut icon" href="images/logo.png">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Waldegrave Advisory LTD",
+      "url": "https://www.waldegraveadvisory.com/",
+      "logo": "https://www.waldegraveadvisory.com/images/logo.png",
+      "image": "https://www.waldegraveadvisory.com/images/og-image.jpg",
+      "description": "Expert financial risk management advisory services specializing in FX, commodities, and cryptocurrency markets. Tailored hedging strategies for businesses of all sizes.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Financial Street",
+        "addressLocality": "London",
+        "postalCode": "EC1A 1AA",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5074",
+        "longitude": "0.1278"
+      },
+      "telephone": "+44 20 1234 5678",
+      "email": "info@waldegraveadvisory.com",
+      "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00",
+      "sameAs": [
+        "https://www.linkedin.com/company/waldegrave-advisory/",
+        "https://twitter.com/WaldegraveAdv"
+      ],
+      "priceRange": "££",
+      "keywords": "financial risk management, FX risk, currency hedging, commodity risk advisory, cryptocurrency risk",
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.5074",
+          "longitude": "0.1278"
+        },
+        "geoRadius": "100000"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Alexander Price",
+        "jobTitle": "Founder & Managing Director"
+      }
+    }
+    </script>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
     <header>
         <div class="container">
             <div class="logo">
-                <h1>WALDEGRAVE <span>ADVISORY</span></h1>
+                <a href="#home">
+                    <img src="images/logo.png" alt="Waldegrave Advisory Logo" class="logo-img">
+                    <h1 itemprop="headline">WALDEGRAVE <span class="gold-gradient">ADVISORY</span></h1>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#insights">Market Insights</a></li>
-                    <li><a href="#contact">Contact</a></li>
+            <nav aria-label="Main Navigation">
+                <ul role="menubar">
+                    <li role="none"><a href="#home" class="active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#about" role="menuitem">About Us</a></li>
+                    <li role="none"><a href="#services" role="menuitem">Services</a></li>
+                    <li role="none"><a href="#insights" role="menuitem">Market Insights</a></li>
+                    <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <div class="mobile-menu-btn" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </div>
         </div>
     </header>
+    
+    <!-- Mobile navigation overlay -->
+    <div class="nav-overlay"></div>
 
     <section id="home" class="hero">
         <div class="container">
@@ -289,7 +351,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>WALDEGRAVE <span>ADVISORY</span></h3>
+                    <div class="footer-brand">
+                        <img src="images/logo.png" alt="Waldegrave Advisory Logo" class="footer-logo-img">
+                        <h3>WALDEGRAVE <span class="gold-gradient">ADVISORY</span></h3>
+                    </div>
                     <p>Strategic Financial Risk Management</p>
                 </div>
                 <div class="footer-links">
@@ -335,6 +400,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script src="js/main.js"></script>
 </body>

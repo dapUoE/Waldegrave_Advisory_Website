@@ -1,14 +1,61 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize mobile menu
+    // Initialize mobile menu with overlay
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
+    const navOverlay = document.querySelector('.nav-overlay');
     
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
+    if (mobileMenuBtn && navOverlay) {
+        // Toggle menu when button is clicked
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            
             nav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
             this.querySelector('i').classList.toggle('fa-bars');
             this.querySelector('i').classList.toggle('fa-times');
+            document.body.classList.toggle('menu-open');
         });
+        
+        // Close menu when overlay is clicked
+        navOverlay.addEventListener('click', function() {
+            closeMenu();
+        });
+        
+        // Don't close when clicking inside the menu
+        nav.addEventListener('click', function(e) {
+            e.stopPropagation(); // Keep the menu open when clicking inside it
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (nav.classList.contains('active') && 
+                !nav.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+        
+        // Close menu when nav links are clicked
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Allow the link to work
+                setTimeout(closeMenu, 100);
+            });
+        });
+        
+        // Helper function to close menu
+        function closeMenu() {
+            nav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            document.body.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
     }
     
     // Handle header scroll effect
@@ -427,6 +474,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add dark mode toggle
     addDarkModeToggle();
     
+    // Initialize back to top button
+    initBackToTopButton();
+    
     // Helper Functions
     function generateRandomData(count, min, max) {
         const data = [];
@@ -559,6 +609,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 insightsChart.options.scales.y.grid.color = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
                 insightsChart.update();
             }
+        });
+    }
+    
+    function initBackToTopButton() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        if (!backToTopButton) return;
+        
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        // Smooth scroll to top when clicked
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
     
