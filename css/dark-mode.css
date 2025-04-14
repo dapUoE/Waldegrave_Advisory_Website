@@ -1,0 +1,99 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+body.dark-mode .light-bg,
+body.dark-mode .service-card,
+body.dark-mode .insights-visual,
+body.dark-mode .contact-form,
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea,
+body.dark-mode .value-item {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+body.dark-mode .section-header h2,
+body.dark-mode .about-text h3,
+body.dark-mode .service-card h3,
+body.dark-mode .insights-text h3,
+body.dark-mode .contact-info h3,
+body.dark-mode .value-item h4 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .dark-text {
+    color: #f5f5f5;
+}
+
+body.dark-mode .grey-text,
+body.dark-mode .value-item p {
+    color: #aaaaaa;
+}
+
+body.dark-mode .border-color,
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    border-color: #333;
+}
+
+body.dark-mode .btn-chart {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #444;
+}
+
+body.dark-mode .btn-tertiary {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .service-card {
+    border-top-color: var(--secondary-color);
+}
+
+body.dark-mode .contact-item i {
+    background-color: #333;
+}
+
+/* Chart Adjustments for Dark Mode */
+body.dark-mode .insights-chart-container canvas {
+    filter: brightness(0.9);
+}
+
+/* Form Focus States */
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
+}
+
+/* Risk Calculator Dark Mode */
+body.dark-mode .risk-calculator {
+    background-color: #121212;
+}
+
+body.dark-mode .calculator-form select {
+    color: var(--light-text);
+}
+
+body.dark-mode .risk-area-bar {
+    background-color: var(--accent-color);
+}
+
+body.dark-mode .range-input {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .range-input::-webkit-slider-thumb {
+    background: var(--accent-color);
+}
+
+body.dark-mode .range-input::-webkit-slider-thumb:hover {
+    background: var(--light-text);
+}
