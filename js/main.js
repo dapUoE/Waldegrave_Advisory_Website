@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Risk Calculator
-    initRiskCalculator();
     // Initialize mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
@@ -380,47 +378,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize contact form submission
+    // Initialize contact form submission with Google Forms
     const contactForm = document.getElementById('contactForm');
+    const hiddenIframe = document.getElementById('hidden_iframe');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    if (contactForm && hiddenIframe) {
+        // Handle form submission success
+        hiddenIframe.onload = function() {
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'form-success fade-in';
+            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! We will be in touch soon.';
             
-            // In a real implementation, you would send the form data to a server
-            // For this demo, we'll just show a success message
-            const formData = new FormData(contactForm);
-            let formValues = {};
-            
-            for (let [key, value] of formData.entries()) {
-                formValues[key] = value;
-            }
-            
-            // Simulate form submission
+            // Get the submit button and reset it
             const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            setTimeout(() => {
-                // Reset form
-                contactForm.reset();
-                
-                // Show success message
-                const successMessage = document.createElement('div');
-                successMessage.className = 'form-success fade-in';
-                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! We will be in touch soon.';
-                
+            if (submitButton && submitButton.innerHTML.includes('fa-spinner')) {
                 contactForm.parentNode.insertBefore(successMessage, contactForm);
                 contactForm.style.display = 'none';
                 
-                // For demo purposes, reset the form after 5 seconds
+                // Reset the form
+                contactForm.reset();
+                
+                // Reset the form after 5 seconds
                 setTimeout(() => {
                     contactForm.style.display = 'block';
                     successMessage.remove();
                     submitButton.disabled = false;
                     submitButton.innerHTML = 'Send Message';
                 }, 5000);
-            }, 2000);
+            }
+        };
+        
+        // Submit event
+        contactForm.addEventListener('submit', function() {
+            // Update button to show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         });
     }
     
@@ -568,159 +562,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Risk Calculator Functionality
-    function initRiskCalculator() {
-        // Get elements
-        const calculateBtn = document.getElementById('calculateRisk');
-        if (!calculateBtn) return;
-        
-        // Range input value display updates
-        const rangeInputs = document.querySelectorAll('.range-input');
-        rangeInputs.forEach(input => {
-            const valueDisplay = document.getElementById(`${input.id}Value`);
-            if (valueDisplay) {
-                // Set initial value
-                valueDisplay.textContent = input.value;
-                
-                // Update on change
-                input.addEventListener('input', function() {
-                    valueDisplay.textContent = this.value;
-                });
-            }
-        });
-        
-        // Calculate button click event
-        calculateBtn.addEventListener('click', function() {
-            // Get input values
-            const industry = document.getElementById('industry').value;
-            const fxExposure = parseInt(document.getElementById('fxExposure').value);
-            const commodityExposure = parseInt(document.getElementById('commodityExposure').value);
-            const cryptoExposure = parseInt(document.getElementById('cryptoExposure').value);
-            const hedgingMaturity = parseInt(document.getElementById('hedgingMaturity').value);
-            
-            // Calculate risk scores
-            const fxRisk = calculateRiskScore(fxExposure, industry, 'fx');
-            const commodityRisk = calculateRiskScore(commodityExposure, industry, 'commodity');
-            const cryptoRisk = calculateRiskScore(cryptoExposure, industry, 'crypto');
-            const hedgingGap = calculateHedgingGap(hedgingMaturity, fxExposure, commodityExposure, cryptoExposure);
-            
-            // Calculate overall risk
-            const overallRisk = calculateOverallRisk(fxRisk, commodityRisk, cryptoRisk, hedgingGap);
-            
-            // Update UI
-            updateRiskUI(fxRisk, commodityRisk, cryptoRisk, hedgingGap, overallRisk, industry);
-        });
-    }
-    
-    function calculateRiskScore(exposure, industry, type) {
-        // Base risk is the exposure level
-        let riskScore = exposure;
-        
-        // Industry risk factors (simplified for demo)
-        const industryFactors = {
-            'manufacturing': { fx: 1.3, commodity: 1.5, crypto: 0.7 },
-            'retail': { fx: 1.2, commodity: 1.2, crypto: 0.8 },
-            'financial': { fx: 1.4, commodity: 1.0, crypto: 1.5 },
-            'tech': { fx: 1.1, commodity: 0.8, crypto: 1.7 },
-            'energy': { fx: 1.0, commodity: 1.8, crypto: 0.6 },
-            'healthcare': { fx: 0.9, commodity: 0.7, crypto: 0.5 },
-            'other': { fx: 1.0, commodity: 1.0, crypto: 1.0 }
-        };
-        
-        // Apply industry factor if available
-        if (industry && industryFactors[industry]) {
-            const factor = industryFactors[industry][type] || 1;
-            riskScore = riskScore * factor;
-        }
-        
-        // Cap at 10
-        return Math.min(Math.round(riskScore * 10) / 10, 10);
-    }
-    
-    function calculateHedgingGap(maturity, fxExposure, commodityExposure, cryptoExposure) {
-        // Calculate average exposure
-        const totalExposure = fxExposure + commodityExposure + cryptoExposure;
-        const avgExposure = totalExposure / 3;
-        
-        // Higher exposure with lower maturity = larger gap
-        const hedgingGap = avgExposure * (1 - maturity / 10);
-        
-        return Math.min(Math.round(hedgingGap * 10) / 10, 10);
-    }
-    
-    function calculateOverallRisk(fxRisk, commodityRisk, cryptoRisk, hedgingGap) {
-        // Weighted formula
-        const weightedRisk = (fxRisk * 0.35) + (commodityRisk * 0.25) + (cryptoRisk * 0.15) + (hedgingGap * 0.25);
-        return Math.min(Math.round(weightedRisk * 10) / 10, 10);
-    }
-    
-    function updateRiskUI(fxRisk, commodityRisk, cryptoRisk, hedgingGap, overallRisk, industry) {
-        // Update risk meter
-        const riskMeterFill = document.getElementById('riskMeterFill');
-        const fillPercentage = (overallRisk / 10) * 100;
-        riskMeterFill.style.width = `${fillPercentage}%`;
-        
-        // Update risk level text
-        const riskLevel = document.getElementById('riskLevel');
-        let riskText = 'Moderate Risk';
-        
-        if (overallRisk < 3) {
-            riskText = 'Low Risk';
-        } else if (overallRisk < 5) {
-            riskText = 'Moderate-Low Risk';
-        } else if (overallRisk < 7) {
-            riskText = 'Moderate Risk';
-        } else if (overallRisk < 8.5) {
-            riskText = 'Elevated Risk';
-        } else {
-            riskText = 'High Risk';
-        }
-        
-        riskLevel.textContent = riskText;
-        
-        // Update risk breakdown bars
-        document.getElementById('fxRiskBar').style.width = `${(fxRisk / 10) * 100}%`;
-        document.getElementById('commodityRiskBar').style.width = `${(commodityRisk / 10) * 100}%`;
-        document.getElementById('cryptoRiskBar').style.width = `${(cryptoRisk / 10) * 100}%`;
-        document.getElementById('hedgingGapBar').style.width = `${(hedgingGap / 10) * 100}%`;
-        
-        // Generate recommendation
-        const recommendation = document.getElementById('riskRecommendation');
-        let recommendationText = '';
-        
-        // Highest risk factor
-        const riskFactors = [
-            { name: 'FX', value: fxRisk },
-            { name: 'commodity', value: commodityRisk },
-            { name: 'cryptocurrency', value: cryptoRisk },
-            { name: 'hedging strategy', value: hedgingGap }
-        ];
-        
-        riskFactors.sort((a, b) => b.value - a.value);
-        const highestRisk = riskFactors[0];
-        
-        if (highestRisk.value > 7) {
-            recommendationText = `<h4>Recommendation</h4>
-            <p>Based on your inputs, we recommend scheduling a priority consultation with our ${highestRisk.name} risk specialists. Your exposure in this area requires immediate attention and a comprehensive risk management strategy.</p>`;
-        } else if (highestRisk.value > 5) {
-            recommendationText = `<h4>Recommendation</h4>
-            <p>Based on your inputs, your ${highestRisk.name} risk exposure indicates an opportunity to strengthen your risk management approach. We recommend a consultation with our specialists to review and enhance your current strategy.</p>`;
-        } else {
-            recommendationText = `<h4>Recommendation</h4>
-            <p>Based on your profile, your risk management strategy appears to be effective. We recommend a periodic review to ensure continued alignment with market conditions and your business objectives.</p>`;
-        }
-        
-        recommendation.innerHTML = recommendationText;
-        
-        // Animate in results
-        document.getElementById('riskResults').classList.add('fade-in');
-        
-        // Scroll to results if on mobile
-        if (window.innerWidth < 992) {
-            document.getElementById('riskResults').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }
-    }
 });

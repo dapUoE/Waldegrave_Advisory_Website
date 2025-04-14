@@ -292,30 +292,97 @@ nav ul li a.active:after {
     background-color: var(--light-bg);
 }
 
-.about-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 4rem;
+.about-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
 }
 
-.about-text {
-    flex: 1;
-}
-
-.about-text h3 {
+.about-intro h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--primary-color);
 }
 
-.about-text p {
-    margin-bottom: 1rem;
-    color: var(--dark-text);
+.about-intro p {
+    font-size: 1.1rem;
 }
 
-.about-visual {
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+.about-profile {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+}
+
+.profile-image {
+    flex-shrink: 0;
+    width: 200px;
+    height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 3px solid #fff;
+}
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-text {
     flex: 1;
+}
+
+.profile-text h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.profile-title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.profile-text p {
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.about-values {
+    margin-top: 1rem;
+}
+
+.values-heading {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
 }
 
 .value-proposition {
@@ -352,6 +419,26 @@ nav ul li a.active:after {
     font-size: 0.95rem;
 }
 
+@media screen and (max-width: 991px) {
+    .about-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin: 0 auto 2rem;
+        width: 180px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-image {
+        width: 160px;
+        height: 220px;
+    }
+}
+
 /* Services Section */
 .services {
     background-color: #fff;
@@ -365,8 +452,9 @@ nav ul li a.active:after {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    grid-auto-rows: 1fr;
 }
 
 .service-card {
@@ -378,6 +466,9 @@ nav ul li a.active:after {
     padding: 2rem;
     position: relative;
     border-top: 4px solid var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .service-card:hover {
@@ -398,6 +489,7 @@ nav ul li a.active:after {
 
 .service-card ul {
     margin-bottom: 2rem;
+    flex-grow: 1;
 }
 
 .service-card ul li {
@@ -411,6 +503,11 @@ nav ul li a.active:after {
     position: absolute;
     left: 0;
     color: var(--secondary-color);
+}
+
+.service-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
 }
 
 /* Insights Section */
@@ -545,6 +642,23 @@ nav ul li a.active:after {
     resize: vertical;
 }
 
+.form-success {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.form-success i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -676,6 +790,12 @@ footer {
     .about-visual, 
     .insights-visual {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 }
 
