@@ -315,14 +315,14 @@ nav ul li a.active:after {
 
 .hero-visual {
     width: 45%;
-    height: 400px;
+    height: 450px;
     border-radius: 8px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     box-shadow: var(--box-shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .market-data-visual {
@@ -719,6 +719,7 @@ nav ul li a.active:after {
     justify-content: center;
     text-align: center;
     padding: 3rem 2rem;
+    min-height: 500px; /* Ensure enough height for the content */
 }
 
 .contact-logo-content {
@@ -762,11 +763,28 @@ nav ul li a.active:after {
     gap: 0.5rem;
 }
 
+.btn-contact-email {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-contact-email:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+}
+
 .contact-note {
     font-size: 0.9rem;
     color: var(--grey-text);
     font-style: italic;
     padding: 0.75rem;
+    margin: 0 auto 1.5rem;
     border-left: 3px solid var(--accent-color);
     background-color: rgba(0, 194, 255, 0.05);
     max-width: 80%;
